@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check agent files
+        run: |
+          agents=("paper-writer" "literature-reviewer" "methodology-designer" "data-analyst" "academic-editor" "citation-manager")
+          for agent in "${agents[@]}"; do
+            if [ ! -f ".claude/agents/$agent.md" ]; then
+              echo "MISSING: .claude/agents/$agent.md"
+              exit 1
+            fi
+          done
+          echo "All 6 agent files exist"
+
+      - name: Check prompt templates
+        run: |
+          templates=("abstract" "introduction" "methodology" "results" "discussion")
+          for tmpl in "${templates[@]}"; do
+            if [ ! -f "prompts/sections/$tmpl.md" ]; then
+              echo "MISSING: prompts/sections/$tmpl.md"
+              exit 1
+            fi
+          done
+          echo "All 5 section templates exist"
+
+      - name: Check style guides
+        run: |
+          styles=("apa7" "ieee" "gb-t7714")
+          for style in "${styles[@]}"; do
+            if [ ! -f "prompts/styles/$style.md" ]; then
+              echo "MISSING: prompts/styles/$style.md"
+              exit 1
+            fi
+          done
+          echo "All 3 style guides exist"
+
+      - name: Check language guides
+        run: |
+          if [ ! -f "prompts/languages/chinese-academic.md" ] || [ ! -f "prompts/languages/english-academic.md" ]; then
+            echo "MISSING: language guides"
+            exit 1
+          fi
+          echo "Both language guides exist"
+
+      - name: Check project docs
+        run: |
+          for f in README.md README.zh-CN.md LICENSE CONTRIBUTING.md CHANGELOG.md .gitignore; do
+            if [ ! -f "$f" ]; then
+              echo "MISSING: $f"
+              exit 1
+            fi
+          done
+          echo "All project docs exist"
+
+      - name: Validate LICENSE author
+        run: |
+          if grep -q "WuSuBuDuoMing" LICENSE; then
+            echo "LICENSE author correct"
+          else
+            echo "WARNING: LICENSE author mismatch"
+          fi
+
+      - name: Project stats
+        run: |
+          echo "=== Paper Writer - Project Stats ==="
+          echo "  Agent files:       $(find .claude/agents -name '*.md' | wc -l)"
+          echo "  Section prompts:   $(find prompts/sections -name '*.md' | wc -l)"
+          echo "  Style guides:      $(find prompts/styles -name '*.md' | wc -l)"
+          echo "  Language guides:   $(find prompts/languages -name '*.md' | wc -l)"
+          echo "  Total MD files:    $(find . -name '*.md' | wc -l)"
+          echo "  Total lines:       $(find . -name '*.md' | xargs wc -l | tail -1)"
