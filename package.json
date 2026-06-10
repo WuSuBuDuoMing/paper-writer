@@ -1,0 +1,9 @@
+{
+  "name": "paper-writer",
+  "version": "1.0.0",
+  "description": "AI-powered academic paper writing agent for Claude Code — 6 agents, 5 templates, 3 styles",
+  "author": "WuSuBuDuoMing",
+  "license": "MIT",
+  "files": [".claude", "prompts", "README.md", "LICENSE"],
+  "keywords": ["claude", "paper-writing", "academic", "ai-agent", "prompt-engineering"]
+}
