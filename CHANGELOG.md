@@ -38,3 +38,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Chinese README (README.zh-CN.md)
 - Contributing guidelines
 - Changelog
+
+## [1.1.0] - 2026-06-10
+
+### Added
+- Multi-platform installation guide (npm, macOS, Linux, Windows, Claude Code)
+- npm package (`paper-writer`) published to npm registry
+- npm publish workflow (publish.yml)
+- Website and Topics added to GitHub repository
+- Enhanced Release notes with platform-specific instructions
+
+### Changed
+- Repository made public for open-source community
