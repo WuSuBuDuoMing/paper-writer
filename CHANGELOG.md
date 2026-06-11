@@ -50,3 +50,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 - Repository made public for open-source community
+
+## [1.2.0] - 2026-06-11
+
+### Added
+- `validate.mjs` — project validation script (file existence, README links, placeholders, package.json)
+- `npm run validate` script in package.json
+- `examples/journal-paper-example.md` — complete workflow example for journal papers
+- Comprehensive `README.zh-CN.md` with full agent documentation, templates, and project structure
+
+### Changed
+- Bumped version from 1.0.0 to 1.2.0 in package.json (aligned with CHANGELOG)
+- Expanded `files` field in package.json to include `examples/` and `validate.mjs`
