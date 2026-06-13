@@ -51,6 +51,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Repository made public for open-source community
 
+## [1.3.0] - 2026-06-14
+
+### Changed
+- Local optimization and performance improvements
+- CHANGELOG sync across repositories
+- npm package published
+- Documentation improvements
+
 ## [1.2.0] - 2026-06-11
 
 ### Added
