@@ -4,6 +4,46 @@ All notable changes to Paper Writer will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.10.0] - 2026-06-18
+
+### Added
+- Comprehensive README overhaul with Table of Contents, Features section, detailed Agent descriptions, and workflow diagrams
+- Expanded CONTRIBUTING.md with commit convention table, detailed contribution types, and step-by-step guides
+- Full Contributor Covenant Code of Conduct (v2.1) with enforcement guidelines and severity levels
+- Enhanced SECURITY.md with vulnerability severity matrix, disclosure policy, and security best practices
+- Enhanced CI workflow with per-file status reporting, package.json validation, and project stats
+- PRs Welcome badge and CI status badge in README
+
+### Changed
+- README.md restructured for clarity and completeness -- removed emoji overuse, added proper Markdown links
+- Version bumped to 1.10.0 across package.json and CHANGELOG
+- CI workflow now checks for all community files (CODE_OF_CONDUCT, SECURITY, CODEOWNERS, package.json)
+
+## [1.9.0] - 2026-06-18
+
+### Added
+- Expanded agent documentation with per-agent capability lists
+- Workflow diagram showing the paper writing process flow
+- Supported Paper Types section with expanded descriptions
+- Quick Contribution Guide in README
+
+### Changed
+- Prompt Templates section now includes file links
+- Formatting Styles section includes use-case descriptions
+- Project Structure tree updated to include all community files
+
+## [1.8.0] - 2026-06-18
+
+### Added
+- Installation section with detailed prerequisites and step-by-step setup
+- Usage examples showing slash commands and multi-step workflow
+- Agent definitions table in README with role and capability summaries
+- License and Contributing sections with direct links to supporting documents
+
+### Changed
+- README badges updated: added CI status badge, version badge, PRs Welcome badge
+- README overview section expanded with Key Highlights subsection
+
 ## [1.7.0] - 2026-06-16
 
 ### Added
@@ -19,40 +59,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Documentation enhancements
 - Open-source best practices
 
-## [1.0.0] - 2026-06-09
+## [1.3.0] - 2026-06-14
 
-### 🎉 Initial Release
+### Changed
+- Local optimization and performance improvements
+- CHANGELOG sync across repositories
+- npm package published
+- Documentation improvements
 
-#### Agents
-- **Paper Writer** — Main orchestrator for the entire writing workflow
-- **Literature Reviewer** — Systematic literature search, analysis, and synthesis
-- **Methodology Designer** — Research design, sampling, data collection, validity
-- **Data Analyst** — Statistical analysis, results writing, table/figure formatting
-- **Academic Editor** — Language polish, formatting, Chinese/English academic writing
-- **Citation Manager** — Reference management, APA/IEEE/GB-T 7714 formatting
+## [1.2.0] - 2026-06-11
 
-#### Prompt Templates
-- Abstract generation (Chinese + English)
-- Introduction writing (background, problem, significance)
-- Methodology design (research framework, data collection, analysis plan)
-- Results writing (statistical reporting, table/figure descriptions)
-- Discussion writing (theoretical contributions, practical implications)
+### Added
+- `validate.mjs` -- project validation script (file existence, README links, placeholders, package.json)
+- `npm run validate` script in package.json
+- `examples/journal-paper-example.md` -- complete workflow example for journal papers
+- Comprehensive `README.zh-CN.md` with full agent documentation, templates, and project structure
 
-#### Formatting Styles
-- APA 7th Edition — Psychology, Education, Social Sciences
-- IEEE — Engineering, Computer Science, Electronics
-- GB/T 7714-2015 — Chinese academic papers (national standard)
-
-#### Language Guides
-- Chinese Academic Writing — 学术用语、常见问题、段落结构
-- English Academic Writing — Hedging, tense usage, common patterns
-
-#### Project Infrastructure
-- MIT License
-- English README with badges and documentation
-- Chinese README (README.zh-CN.md)
-- Contributing guidelines
-- Changelog
+### Changed
+- Bumped version from 1.0.0 to 1.2.0 in package.json (aligned with CHANGELOG)
+- Expanded `files` field in package.json to include `examples/` and `validate.mjs`
 
 ## [1.1.0] - 2026-06-10
 
@@ -66,22 +91,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Repository made public for open-source community
 
-## [1.3.0] - 2026-06-14
+## [1.0.0] - 2026-06-09
 
-### Changed
-- Local optimization and performance improvements
-- CHANGELOG sync across repositories
-- npm package published
-- Documentation improvements
+### Initial Release
 
-## [1.2.0] - 2026-06-11
+#### Agents
+- **Paper Writer** -- Main orchestrator for the entire writing workflow
+- **Literature Reviewer** -- Systematic literature search, analysis, and synthesis
+- **Methodology Designer** -- Research design, sampling, data collection, validity
+- **Data Analyst** -- Statistical analysis, results writing, table/figure formatting
+- **Academic Editor** -- Language polish, formatting, Chinese/English academic writing
+- **Citation Manager** -- Reference management, APA/IEEE/GB-T 7714 formatting
 
-### Added
-- `validate.mjs` — project validation script (file existence, README links, placeholders, package.json)
-- `npm run validate` script in package.json
-- `examples/journal-paper-example.md` — complete workflow example for journal papers
-- Comprehensive `README.zh-CN.md` with full agent documentation, templates, and project structure
+#### Prompt Templates
+- Abstract generation (Chinese + English)
+- Introduction writing (background, problem, significance)
+- Methodology design (research framework, data collection, analysis plan)
+- Results writing (statistical reporting, table/figure descriptions)
+- Discussion writing (theoretical contributions, practical implications)
 
-### Changed
-- Bumped version from 1.0.0 to 1.2.0 in package.json (aligned with CHANGELOG)
-- Expanded `files` field in package.json to include `examples/` and `validate.mjs`
+#### Formatting Styles
+- APA 7th Edition -- Psychology, Education, Social Sciences
+- IEEE -- Engineering, Computer Science, Electronics
+- GB/T 7714-2015 -- Chinese academic papers (national standard)
+
+#### Language Guides
+- Chinese Academic Writing
+- English Academic Writing
+
+#### Project Infrastructure
+- MIT License
+- English README with badges and documentation
+- Chinese README (README.zh-CN.md)
+- Contributing guidelines
+- Changelog

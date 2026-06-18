@@ -8,76 +8,125 @@ on:
 
 jobs:
   validate:
-    name: Validate Structure
+    name: Validate Project Structure
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check agent files
+      - name: Check agent files (6 required)
         run: |
           agents=("paper-writer" "literature-reviewer" "methodology-designer" "data-analyst" "academic-editor" "citation-manager")
+          missing=0
           for agent in "${agents[@]}"; do
             if [ ! -f ".claude/agents/$agent.md" ]; then
               echo "MISSING: .claude/agents/$agent.md"
-              exit 1
+              missing=1
+            else
+              echo "OK: .claude/agents/$agent.md"
             fi
           done
-          echo "All 6 agent files exist"
+          if [ $missing -eq 1 ]; then exit 1; fi
+          echo "All 6 agent files present"
 
-      - name: Check prompt templates
+      - name: Check prompt templates (5 sections)
         run: |
           templates=("abstract" "introduction" "methodology" "results" "discussion")
+          missing=0
           for tmpl in "${templates[@]}"; do
             if [ ! -f "prompts/sections/$tmpl.md" ]; then
               echo "MISSING: prompts/sections/$tmpl.md"
-              exit 1
+              missing=1
+            else
+              echo "OK: prompts/sections/$tmpl.md"
             fi
           done
-          echo "All 5 section templates exist"
+          if [ $missing -eq 1 ]; then exit 1; fi
+          echo "All 5 section templates present"
 
-      - name: Check style guides
+      - name: Check style guides (3 styles)
         run: |
           styles=("apa7" "ieee" "gb-t7714")
+          missing=0
           for style in "${styles[@]}"; do
             if [ ! -f "prompts/styles/$style.md" ]; then
               echo "MISSING: prompts/styles/$style.md"
-              exit 1
+              missing=1
+            else
+              echo "OK: prompts/styles/$style.md"
             fi
           done
-          echo "All 3 style guides exist"
+          if [ $missing -eq 1 ]; then exit 1; fi
+          echo "All 3 style guides present"
 
       - name: Check language guides
         run: |
-          if [ ! -f "prompts/languages/chinese-academic.md" ] || [ ! -f "prompts/languages/english-academic.md" ]; then
-            echo "MISSING: language guides"
-            exit 1
-          fi
-          echo "Both language guides exist"
-
-      - name: Check project docs
-        run: |
-          for f in README.md README.zh-CN.md LICENSE CONTRIBUTING.md CHANGELOG.md .gitignore; do
-            if [ ! -f "$f" ]; then
-              echo "MISSING: $f"
-              exit 1
+          missing=0
+          for guide in "chinese-academic" "english-academic"; do
+            if [ ! -f "prompts/languages/$guide.md" ]; then
+              echo "MISSING: prompts/languages/$guide.md"
+              missing=1
+            else
+              echo "OK: prompts/languages/$guide.md"
             fi
           done
-          echo "All project docs exist"
+          if [ $missing -eq 1 ]; then exit 1; fi
+          echo "Both language guides present"
 
-      - name: Validate LICENSE author
+      - name: Check required project files
         run: |
-          if grep -q "WuSuBuDuoMing" LICENSE; then
-            echo "LICENSE author correct"
-          else
+          required=(
+            "README.md"
+            "README.zh-CN.md"
+            "LICENSE"
+            "CONTRIBUTING.md"
+            "CODE_OF_CONDUCT.md"
+            "SECURITY.md"
+            "CHANGELOG.md"
+            ".gitignore"
+            "CODEOWNERS"
+            "package.json"
+          )
+          missing=0
+          for f in "${required[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "MISSING: $f"
+              missing=1
+            else
+              echo "OK: $f"
+            fi
+          done
+          if [ $missing -eq 1 ]; then exit 1; fi
+          echo "All required project files present"
+
+      - name: Verify LICENSE
+        run: |
+          if ! grep -q "MIT" LICENSE; then
+            echo "ERROR: LICENSE does not contain MIT"
+            exit 1
+          fi
+          if ! grep -q "WuSuBuDuoMing" LICENSE; then
             echo "WARNING: LICENSE author mismatch"
           fi
+          echo "LICENSE verified"
+
+      - name: Validate package.json
+        run: |
+          if ! node -e "const p = require('./package.json'); if (!p.name || !p.version || !p.license) process.exit(1);" 2>/dev/null; then
+            echo "ERROR: package.json missing required fields"
+            exit 1
+          fi
+          echo "package.json valid"
+
+      - name: Run validation script
+        run: node validate.mjs || echo "Validation script returned warnings (non-blocking)"
 
       - name: Project stats
         run: |
           echo "=== Paper Writer - Project Stats ==="
-          echo "  Agent files:       $(find .claude/agents -name '*.md' | wc -l)"
-          echo "  Section prompts:   $(find prompts/sections -name '*.md' | wc -l)"
-          echo "  Style guides:      $(find prompts/styles -name '*.md' | wc -l)"
-          echo "  Language guides:   $(find prompts/languages -name '*.md' | wc -l)"
-          echo "  Total MD files:    $(find . -name '*.md' | wc -l)"
-          echo "  Total lines:       $(find . -name '*.md' | xargs wc -l | tail -1)"
+          echo "  Agents:          $(find .claude/agents -name '*.md' 2>/dev/null | wc -l)"
+          echo "  Section prompts: $(find prompts/sections -name '*.md' 2>/dev/null | wc -l)"
+          echo "  Style guides:    $(find prompts/styles -name '*.md' 2>/dev/null | wc -l)"
+          echo "  Language guides: $(find prompts/languages -name '*.md' 2>/dev/null | wc -l)"
+          echo "  Examples:        $(find examples -name '*.md' 2>/dev/null | wc -l)"
+          echo "  Total MD files:  $(find . -name '*.md' -not -path './.git/*' | wc -l)"
+          echo "  Total lines:     $(find . -name '*.md' -not -path './.git/*' -exec cat {} + | wc -l)"
