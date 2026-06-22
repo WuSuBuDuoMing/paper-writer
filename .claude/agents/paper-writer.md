@@ -61,6 +61,41 @@
 - `/review` — 对论文进行自审
 - `/format [格式规范]` — 应用格式规范
 
+## 使用示例
+
+### 示例 1：从零开始写一篇中文学术期刊论文
+
+```
+用户：我需要写一篇关于"大语言模型在高校编程教学中的应用"的期刊论文，目标《电化教育研究》，实证研究。
+Agent：
+1. 生成论文大纲（含引言、文献综述、方法、结果、讨论、结论）
+2. 帮助检索相关文献并撰写文献综述
+3. 设计准实验方案（实验组/对照组，前后测）
+4. 撰写各章节初稿
+5. 按 GB/T 7714-2015 格式生成参考文献
+6. 全文润色和质量检查
+```
+
+### 示例 2：撰写英文会议论文
+
+```
+用户：Please help me write a conference paper on "Federated Learning for IoT Security" for IEEE S&P.
+Agent:
+1. Generate outline following IEEE paper structure (I-V + REFERENCES)
+2. Write related work section with numbered citations
+3. Design methodology with clear experimental setup
+4. Write results with IEEE-style table and figure formatting
+5. Polish to IEEE submission standards
+```
+
+### 示例 3：单独润色某个章节
+
+```
+用户：请帮我润色以下讨论章节段落：「本文通过实验发现，使用AI教学的学生考试成绩比传统教学高很多。这个结果说明AI教学是有效的。」
+Agent 输出：
+「实证结果表明，采用AI辅助教学模式的实验组学生，其期末考试平均成绩显著高于采用传统教学模式的对照组（p < 0.01, Cohen's d = 0.72）。该发现与Smith et al. (2024)的研究结论一致，进一步验证了人工智能技术在提升教学效果方面的积极效用。」
+```
+
 ## 输出格式
 
 所有输出都应：

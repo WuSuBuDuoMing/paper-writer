@@ -7,11 +7,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/WuSuBuDuoMing/paper-writer/actions/workflows/ci.yml/badge.svg)](https://github.com/WuSuBuDuoMing/paper-writer/actions/workflows/ci.yml)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Agent-blue)](https://claude.ai/code)
-[![Version](https://img.shields.io/badge/version-1.10.0-orange.svg)](https://github.com/WuSuBuDuoMing/paper-writer/releases)
+[![Version](https://img.shields.io/badge/version-1.13.0-orange.svg)](https://github.com/WuSuBuDuoMing/paper-writer/releases)
 [![Academic](https://img.shields.io/badge/Type-Academic%20Writing-orange)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**[中文文档](README.zh-CN.md)** | [Report Bug](https://github.com/WuSuBuDuoMing/paper-writer/issues) | [Request Feature](https://github.com/WuSuBuDuoMing/paper-writer/issues)
+**[Chinese Documentation](README.zh-CN.md)** | [Report Bug](https://github.com/WuSuBuDuoMing/paper-writer/issues) | [Request Feature](https://github.com/WuSuBuDuoMing/paper-writer/issues)
 
 </div>
 
@@ -22,10 +22,12 @@
 - [Overview](#overview)
 - [Features](#features)
 - [Quick Start](#quick-start)
+- [Usage Examples](#usage-examples)
 - [Agents](#agents)
 - [Prompt Templates](#prompt-templates)
 - [Formatting Styles](#formatting-styles)
 - [Language Guides](#language-guides)
+- [Advanced Usage](#advanced-usage)
 - [Project Structure](#project-structure)
 - [Supported Paper Types](#supported-paper-types)
 - [Installation](#installation)
@@ -102,7 +104,7 @@ cd paper-writer
 # 2. Copy agent definitions to your paper project
 cp -r .claude/ /path/to/your/paper-project/.claude/
 
-# 3. Copy prompt templates (optional)
+# 3. Copy prompt templates (optional, but recommended)
 cp -r prompts/ /path/to/your/paper-project/prompts/
 
 # 4. Start writing!
@@ -131,24 +133,77 @@ claude
 
 Copy the `.claude/agents/` files to your project's `.claude/agents/` directory. Claude Code will automatically recognize and load them when you start a session.
 
-#### Workflow Example
+---
+
+## Usage Examples
+
+### Example 1: Complete Journal Paper Workflow (Chinese)
 
 ```bash
 # Step 1: Generate an outline
-claude "/outline 机器学习在金融风控中的应用"
+claude "/outline '人工智能个性化学习系统对大学生学习效果的影响研究'"
 
 # Step 2: Review the literature
-claude "/literature machine learning credit risk"
+claude "/literature '个性化学习 人工智能 教育技术'"
 
 # Step 3: Design methodology
-claude "/method quantitative logistic regression"
+claude "/method '准实验设计 前后测对照组'"
 
-# Step 4: Write sections one by one
+# Step 4: Write each section
 claude "/write abstract"
+claude "/write introduction"
+claude "/write results"
+claude "/write discussion"
 
 # Step 5: Polish and review
+claude "/polish '本文研究了人工智能个性化学习系统对...'"
 claude "/review"
+
+# Step 6: Format
+claude "/format GB/T 7714"
 ```
+
+### Example 2: English IEEE Conference Paper
+
+```bash
+# Outline for an IEEE conference paper
+claude "/outline 'Federated Learning-Based Anomaly Detection for IoT Networks'"
+
+# Literature review with IEEE formatting
+claude "/literature 'federated learning IoT security'"
+
+# Write results with IEEE table format
+claude "/write results"
+
+# Apply IEEE citation style
+claude "/format IEEE"
+```
+
+### Example 3: Quick Paragraph Polish
+
+```bash
+# Polish a draft paragraph
+claude "/polish 'This study examines the impact of AI on education.
+We tested 300 students and the results were very good.'"
+
+# Expected output: Academic, hedged language with proper statistical reporting
+# "This study investigates the impact of AI-assisted instruction on educational outcomes.
+#  A quasi-experimental study was conducted involving 300 undergraduate students.
+#  The results demonstrated a statistically significant improvement..."
+```
+
+### Example 4: Bulk Citation Formatting
+
+```bash
+# Convert raw references to a specific format
+claude "/cite 'Wang M, Li H. AI in education. J Educational Tech, 2024, 45(3):12-20'"
+# Output: Wang, M., & Li, H. (2024). AI in education. Journal of Educational Technology, 45(3), 12-20.
+```
+
+For more examples, see:
+- [Journal Paper Example](examples/journal-paper-example.md) -- Chinese journal paper complete workflow
+- [Conference Paper Example](examples/conference-paper-example.md) -- IEEE conference paper workflow
+- [Advanced Usage Guide](examples/advanced-usage.md) -- Multi-agent collaboration, cross-language writing, and more
 
 ---
 
@@ -251,6 +306,19 @@ Each style guide covers page setup, heading hierarchy, in-text citation format, 
 
 ---
 
+## Advanced Usage
+
+For detailed advanced usage, see [examples/advanced-usage.md](examples/advanced-usage.md). Highlights include:
+
+- **Multi-agent collaboration** -- How to orchestrate agents across the full writing workflow
+- **Cross-language writing** -- Translate and polish between Chinese and English academic styles
+- **Journal-specific formatting** -- Customize output for target journal requirements
+- **Thesis writing** -- Special considerations for master's and doctoral theses
+- **Systematic reviews** -- PRISMA-guided literature review workflow
+- **Reviewer feedback** -- Structured approach to revision
+
+---
+
 ## Project Structure
 
 ```
@@ -281,6 +349,10 @@ paper-writer/
 │       └── english-academic.md
 │
 ├── examples/                          # Example papers and workflows
+│   ├── journal-paper-example.md       #   Chinese journal paper workflow
+│   ├── conference-paper-example.md    #   IEEE conference paper workflow
+│   └── advanced-usage.md             #   Advanced usage guide
+│
 ├── .github/                           # GitHub configuration
 │   ├── workflows/                     # CI/CD pipelines
 │   │   ├── ci.yml                     #   Validation workflow
@@ -296,6 +368,7 @@ paper-writer/
 ├── SECURITY.md                        # Security policy
 ├── CHANGELOG.md                       # Version history
 ├── CODEOWNERS                         # Code review assignments
+├── validate.mjs                       # Project validation script
 └── package.json                       # npm package metadata
 ```
 

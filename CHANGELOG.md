@@ -4,6 +4,54 @@ All notable changes to Paper Writer will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.13.0] - 2026-06-22
+
+### Added
+- Advanced Usage Guide (`examples/advanced-usage.md`) covering multi-agent collaboration, cross-language writing, journal-specific formatting, thesis writing, systematic reviews, and reviewer feedback workflows
+- Conference Paper Example (`examples/conference-paper-example.md`) demonstrating complete IEEE conference paper writing workflow
+- Usage Examples section in both README files with 4 detailed end-to-end examples
+- Detailed usage examples for all 6 agent definitions (input/output demonstrations)
+- Expanded APA 7th Edition style guide with title page format, statistical reporting rules, and multiple reference examples per type
+- Expanded IEEE style guide with double-column format notes, mathematical equation formatting, abbreviation conventions, and table/figure examples
+- Expanded GB/T 7714-2015 style guide with master/doctoral thesis structure, patent/standard/report formats, and mixed-language citation rules
+- Advanced Usage section in both README files linking to the new guide
+- Table of Contents added to Chinese README
+
+### Changed
+- Enhanced all 6 agent definitions with detailed usage examples, common phrases, and practical input/output demonstrations
+- Improved Quick Start and Examples sections in both README.md and README.zh-CN.md
+- Version bumped to 1.13.0 across package.json, CHANGELOG, and README badges
+
+### Improved
+- Paper Writer agent: added 3 multi-step workflow examples (Chinese journal, English conference, paragraph polish)
+- Literature Reviewer agent: added systematic search workflow example, structured review paragraph example, and common academic phrases table
+- Methodology Designer agent: added quasi-experimental, mixed-methods, and questionnaire design examples
+- Data Analyst agent: added t-test, regression writing, and table design examples
+- Academic Editor agent: added Chinese/English polish and translation examples
+- Citation Manager agent: added bulk citation, consistency check, and BibTeX generation examples
+
+## [1.12.0] - 2026-06-20
+
+### Added
+- Enhanced agent definitions with richer workflow descriptions and clearer output guidelines
+- Improved prompt templates with more specific usage instructions and writing guidelines
+- Expanded formatting style guides with additional reference type examples
+
+### Changed
+- Refined README structure for better navigation and readability
+- Updated prompt template descriptions with expanded use-case details
+
+## [1.11.0] - 2026-06-19
+
+### Added
+- Conference paper support documentation alongside existing journal paper workflows
+- Enhanced examples directory with workflow descriptions for different paper types
+- Improved cross-references between README and project documentation files
+
+### Changed
+- Updated agent capability descriptions for clarity
+- Refined formatting style guide structure for consistency
+
 ## [1.10.0] - 2026-06-18
 
 ### Added

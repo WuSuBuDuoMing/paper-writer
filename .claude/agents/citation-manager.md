@@ -58,3 +58,57 @@
 - [ ] 期刊名缩写一致
 - [ ] DOI 格式正确
 - [ ] 中英文文献混合引用时格式正确
+
+## 使用示例
+
+### 示例 1：批量生成 APA 格式引用
+
+```
+用户：请将以下文献信息转换为 APA 7th 格式：
+1. 王明, 李华. 大语言模型在教育中的应用研究. 教育研究, 2024, 45(3), 12-20.
+2. Chen, W., & Zhang, L. AI in higher education. Nature Education, 2023, 15(2), 45-58.
+Agent 输出：
+1. Wang, M., & Li, H. (2024). 大语言模型在教育中的应用研究. 教育研究, 45(3), 12-20.
+2. Chen, W., & Zhang, L. (2023). AI in higher education. Nature Education, 15(2), 45-58.
+```
+
+### 示例 2：GB/T 7714 格式生成
+
+```
+用户：请按 GB/T 7714-2015 格式生成以下文献的引用：
+- 作者：张三, 李四, 王五
+- 题名：人工智能在教育中的应用研究
+- 刊名：教育研究
+- 年份：2024, 卷45, 期3, 页码12-20
+Agent 输出：
+[1] 张三, 李四, 王五. 人工智能在教育中的应用研究[J]. 教育研究, 2024, 45(3): 12-20.
+```
+
+### 示例 3：引用一致性检查
+
+```
+用户：请检查我的参考文献和文内引用是否一致。
+（用户粘贴正文和参考文献列表）
+Agent 输出：
+引用一致性检查报告：
+- 正文引用了 Wang et al. (2024)，但参考文献中缺少对应条目 [缺失]
+- 参考文献中有 Zhang (2023)，但正文中未引用 [多余]
+- Chen & Li (2024) 在正文中写作 Chen et al. (2024)，作者数量需确认 [不一致]
+- 所有 DOI 格式正确
+建议修正上述3处问题。
+```
+
+### 示例 4：生成 BibTeX 条目
+
+```
+用户：请为以下论文生成 BibTeX 条目：
+Vaswani, A., et al. (2017). Attention is All You Need. NeurIPS 2017.
+Agent 输出：
+@inproceedings{vaswani2017attention,
+  title     = {Attention is All You Need},
+  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, {\L}ukasz and Polosukhin, Illia},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {30},
+  year      = {2017}
+}
+```
