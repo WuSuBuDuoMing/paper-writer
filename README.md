@@ -96,6 +96,8 @@ Topic Selection --> Literature Review --> Methodology Design
 
 ### Installation
 
+> For platform-specific installation instructions (macOS / Linux / Windows / Docker), see the [Platform Installation](#platform-installation) section below.
+
 ```bash
 # 1. Clone the repository
 git clone https://github.com/WuSuBuDuoMing/paper-writer.git
@@ -382,6 +384,95 @@ paper-writer/
 - **Review Papers** -- Systematic and narrative literature reviews
 - **Research Proposals** -- Grant applications and study proposals
 - **Literature Reviews** -- Standalone review chapters and reports
+
+---
+
+## Platform Installation
+
+### macOS
+
+```bash
+# Option 1: Install via GitHub (Claude Code)
+claude install-github WuSuBuDuoMing/paper-writer
+
+# Option 2: Install via npm
+npm install -g paper-writer
+
+# Option 3: Clone and set up manually
+git clone https://github.com/WuSuBuDuoMing/paper-writer.git
+cd paper-writer
+cp -r .claude/ /path/to/your/paper-project/.claude/
+cp -r prompts/ /path/to/your/paper-project/prompts/
+```
+
+### Linux
+
+```bash
+# Option 1: Install via GitHub (Claude Code)
+claude install-github WuSuBuDuoMing/paper-writer
+
+# Option 2: Install via npm
+npm install -g paper-writer
+
+# Option 3: Clone and set up manually
+git clone https://github.com/WuSuBuDuoMing/paper-writer.git
+cd paper-writer
+cp -r .claude/ /path/to/your/paper-project/.claude/
+cp -r prompts/ /path/to/your/paper-project/prompts/
+```
+
+### Windows
+
+```powershell
+# Option 1: Install via GitHub (Claude Code)
+claude install-github WuSuBuDuoMing/paper-writer
+
+# Option 2: Install via npm
+npm install -g paper-writer
+
+# Option 3: Clone and set up manually
+git clone https://github.com/WuSuBuDuoMing/paper-writer.git
+cd paper-writer
+xcopy .claude\  ..\your-paper-project\.claude\ /E /I /H
+xcopy prompts\  ..\your-paper-project\prompts\ /E /I /H
+```
+
+### Claude Code
+
+If you already have [Claude Code](https://claude.ai/code) installed, you can use Paper Writer directly:
+
+```bash
+# Navigate to your paper project directory
+cd /path/to/your/paper-project
+
+# Copy agent definitions from the cloned repo
+cp -r /path/to/paper-writer/.claude/ .claude/
+cp -r /path/to/paper-writer/prompts/ prompts/
+
+# Start Claude Code -- agents are loaded automatically
+claude
+
+# Use specialized commands:
+/outline "Your Paper Topic"
+/literature "search keywords"
+/write abstract
+/review
+```
+
+### Docker
+
+Run Paper Writer in a containerized environment:
+
+```bash
+# Build the Docker image
+docker build -t paper-writer .
+
+# Run with a mounted project directory
+docker run -v /path/to/your/paper-project:/workspace -it paper-writer
+
+# Or use Docker Compose
+docker compose up
+```
 
 ---
 
