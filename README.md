@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/WuSuBuDuoMing/paper-writer/actions/workflows/ci.yml/badge.svg)](https://github.com/WuSuBuDuoMing/paper-writer/actions/workflows/ci.yml)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Agent-blue)](https://claude.ai/code)
-[![Version](https://img.shields.io/badge/version-1.13.0-orange.svg)](https://github.com/WuSuBuDuoMing/paper-writer/releases)
+[![Version](https://img.shields.io/badge/version-1.16.0-orange.svg)](https://github.com/WuSuBuDuoMing/paper-writer/releases)
 [![Academic](https://img.shields.io/badge/Type-Academic%20Writing-orange)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
@@ -205,6 +205,8 @@ claude "/cite 'Wang M, Li H. AI in education. J Educational Tech, 2024, 45(3):12
 For more examples, see:
 - [Journal Paper Example](examples/journal-paper-example.md) -- Chinese journal paper complete workflow
 - [Conference Paper Example](examples/conference-paper-example.md) -- IEEE conference paper workflow
+- [Thesis Writing Guide](examples/thesis-writing-guide.md) -- Master's and doctoral thesis workflow
+- [Quick Reference](examples/quick-reference.md) -- One-page cheat sheet for all commands
 - [Advanced Usage Guide](examples/advanced-usage.md) -- Multi-agent collaboration, cross-language writing, and more
 
 ---

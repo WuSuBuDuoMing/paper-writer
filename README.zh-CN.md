@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Agent-blue)](https://claude.ai)
-[![Version](https://img.shields.io/badge/version-1.13.0-orange.svg)](https://github.com/WuSuBuDuoMing/paper-writer/releases)
+[![Version](https://img.shields.io/badge/version-1.16.0-orange.svg)](https://github.com/WuSuBuDuoMing/paper-writer/releases)
 [![Academic](https://img.shields.io/badge/Type-Academic%20Writing-orange)]()
 
 **[English](README.md)** | [报告问题](https://github.com/WuSuBuDuoMing/paper-writer/issues) | [功能建议](https://github.com/WuSuBuDuoMing/paper-writer/issues)
@@ -157,6 +157,8 @@ claude "/cite '张三, 李四. 人工智能在教育中的应用. 教育研究, 
 更多示例请查看：
 - [期刊论文示例](examples/journal-paper-example.md) -- 中文学术期刊论文完整流程
 - [会议论文示例](examples/conference-paper-example.md) -- IEEE 会议论文写作流程
+- [学位论文指南](examples/thesis-writing-guide.md) -- 硕博论文写作全流程
+- [快速参考表](examples/quick-reference.md) -- 一页速查表（所有命令、模板、规范）
 - [高级用法指南](examples/advanced-usage.md) -- 多智能体协作、跨语言写作等高级技巧
 
 ---

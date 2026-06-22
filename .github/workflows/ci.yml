@@ -23,6 +23,12 @@ jobs:
               missing=1
             else
               echo "OK: .claude/agents/$agent.md"
+              # Check for role definition section
+              if grep -q "## 角色定义" ".claude/agents/$agent.md"; then
+                echo "  -> Has role definition"
+              else
+                echo "  -> WARNING: Missing role definition"
+              fi
             fi
           done
           if [ $missing -eq 1 ]; then exit 1; fi
@@ -130,3 +136,18 @@ jobs:
           echo "  Examples:        $(find examples -name '*.md' 2>/dev/null | wc -l)"
           echo "  Total MD files:  $(find . -name '*.md' -not -path './.git/*' | wc -l)"
           echo "  Total lines:     $(find . -name '*.md' -not -path './.git/*' -exec cat {} + | wc -l)"
+
+      - name: Check examples directory
+        run: |
+          examples=("journal-paper-example" "conference-paper-example" "advanced-usage" "thesis-writing-guide" "quick-reference")
+          missing=0
+          for ex in "${examples[@]}"; do
+            if [ ! -f "examples/$ex.md" ]; then
+              echo "MISSING: examples/$ex.md"
+              missing=1
+            else
+              echo "OK: examples/$ex.md"
+            fi
+          done
+          if [ $missing -eq 1 ]; then exit 1; fi
+          echo "All example files present"

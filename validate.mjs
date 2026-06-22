@@ -35,6 +35,11 @@ const expectedFiles = [
   'prompts/styles/gb-t7714.md',
   'prompts/languages/chinese-academic.md',
   'prompts/languages/english-academic.md',
+  'examples/journal-paper-example.md',
+  'examples/conference-paper-example.md',
+  'examples/advanced-usage.md',
+  'examples/thesis-writing-guide.md',
+  'examples/quick-reference.md',
 ];
 
 for (const f of expectedFiles) {
@@ -133,11 +138,42 @@ if (existsSync(claudeDir)) {
     const agents = readdirSync(agentsDir).filter(f => f.endsWith('.md'));
     ok(`${agents.length} agent(s) found`);
     if (agents.length !== 6) warn(`Expected 6 agents, found ${agents.length}`);
+    // Check each agent has role definition
+    for (const agent of agents) {
+      const content = readFileSync(join(agentsDir, agent), 'utf-8');
+      const hasRoleDef = content.includes('## 角色定义');
+      const hasWorkflow = content.includes('## 工作流程') || content.includes('## 核心能力');
+      const hasExamples = content.includes('## 使用示例');
+      if (hasRoleDef) ok(`${agent}: has role definition`);
+      else warn(`${agent}: missing "## 角色定义" section`);
+      if (hasWorkflow) ok(`${agent}: has workflow/capabilities`);
+      else warn(`${agent}: missing workflow section`);
+      if (hasExamples) ok(`${agent}: has usage examples`);
+      else warn(`${agent}: missing usage examples`);
+    }
   } else {
     fail('.claude/agents/ directory missing');
   }
 } else {
   fail('.claude/ directory missing');
+}
+
+// --- 6. Check examples directory ---
+
+console.log('\n=== 6. Checking examples/ ===');
+
+const examplesDir = join(ROOT, 'examples');
+if (existsSync(examplesDir)) {
+  const examples = readdirSync(examplesDir).filter(f => f.endsWith('.md'));
+  ok(`${examples.length} example(s) found`);
+  if (examples.length < 3) warn(`Expected at least 3 examples, found ${examples.length}`);
+  for (const ex of examples) {
+    const content = readFileSync(join(examplesDir, ex), 'utf-8');
+    const wordCount = content.split(/\s+/).length;
+    ok(`${ex}: ~${wordCount} words`);
+  }
+} else {
+  fail('examples/ directory missing');
 }
 
 // --- Summary ---

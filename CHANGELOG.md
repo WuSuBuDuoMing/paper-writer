@@ -4,6 +4,57 @@ All notable changes to Paper Writer will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.16.0] - 2026-06-23
+
+### Added
+- Quick Reference cheat sheet (`examples/quick-reference.md`) with one-page command/agent/template reference
+- Thesis Writing Guide (`examples/thesis-writing-guide.md`) for master's and doctoral thesis workflows
+- Role definition section (`## 角色定义`) for all 6 agents with identity, stance, boundary, and language specifications
+- Smart prompting section (`## 智能提示`) for all 6 agents with guided questions for incomplete user input
+- Quality self-check checklists (`## 质量自检清单`) for all 6 agents with per-chapter verification items
+- New example input sections for all 5 section prompt templates with realistic demonstrations
+- Additional template variables: target journal, language, target word count, ethics review status
+- Enhanced `validate.mjs` with agent role definition checks, example file validation, and word count reporting
+- CI workflow: examples directory check and agent role definition detection
+
+### Changed
+- Enhanced `validate.mjs` to validate all 21 expected files (was 16) including new examples
+- CI workflow now checks for 5 example files and reports agent structure details
+- Updated `package.json` description to reflect 5 examples
+- Version bumped to 1.16.0 across package.json, CHANGELOG, and README badges
+
+## [1.15.0] - 2026-06-23
+
+### Added
+- Enhanced all 5 section prompt templates with richer example inputs and additional variables
+- Abstract template: added target journal, language preference, and realistic example input
+- Introduction template: added target journal, target word count, funnel structure guidance, example input
+- Methodology template: added ethics review variable, instrument citation guidance, example input
+- Results template: added report format variable, target word count, three-line table guidance, example input
+- Discussion template: added target word count, hedging language guidance, example input
+- New example files: `thesis-writing-guide.md` and `quick-reference.md`
+- Updated both README files to link to new example files
+
+### Changed
+- All section templates now include `{目标期刊}` and `{目标字数}` optional variables
+- Writing norms sections expanded with additional rules per template
+- Both README example links updated to include thesis guide and quick reference
+
+## [1.14.0] - 2026-06-23
+
+### Added
+- Role definition sections (`## 角色定义`) for all 6 agents defining identity, stance, boundary, and language preferences
+- Smart prompting sections (`## 智能提示`) for Paper Writer agent with guided questions for incomplete user input
+- Quality self-check checklists for Paper Writer agent with 7 per-chapter verification items
+
+### Improved
+- Paper Writer agent: added role definition, smart prompting, and quality self-check checklist
+- Literature Reviewer agent: added role definition, smart prompting, and quality self-check checklist
+- Methodology Designer agent: added role definition, smart prompting, and quality self-check checklist
+- Data Analyst agent: added role definition, smart prompting, and quality self-check checklist
+- Academic Editor agent: added role definition, smart prompting, and quality self-check checklist
+- Citation Manager agent: added role definition, smart prompting, and quality self-check checklist
+
 ## [1.13.0] - 2026-06-22
 
 ### Added
